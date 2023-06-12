@@ -1,17 +1,21 @@
 N = int(input('Количество человек:'))
 K = int(input('Какое число в считалке?'))
 print('Значит, выбывает каждый',K,'-й человек')
-n_list = list(range(1,N+1))
-start=0
-count = (K % N)
-print(n_list)
-while len(n_list)>1:
-    if len(n_list)>=K:
-        del n_list[N%K]
-        print(n_list)
-    elif len(n_list) == K:
-        del n_list[K]
-        print(n_list)
-    else:
-        del n_list[(K % len(n_list))-1]
-        print(n_list)
+
+
+
+people_list = []
+for i_num in range(1, N + 1):
+    people_list.append(i_num)
+
+index_del = 0
+while len(people_list) > 1:
+    print('Текущий круг людей:', people_list)
+    index_start = index_del % len(people_list)
+    print('Начало счёта с номера', people_list[index_start])
+
+    index_del = (index_start + K - 1) % len(people_list)
+    print('Выбывает человек под номером', people_list[index_del])
+    people_list.remove(people_list[index_del])
+
+print('\nОстался человек под номером', people_list[0])
