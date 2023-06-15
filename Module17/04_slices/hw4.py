@@ -1,5 +1,5 @@
 alphabet = 'abcdefg'
-alphabet1=[letter for letter in alphabet]
+alphabet1=alphabet
 print(alphabet1)
 print(alphabet1[::-1])
 print(alphabet1[::2])
