@@ -6,7 +6,7 @@ for i_ord in range(N_orders):
         dict_orders[order[0]]={order[1]:int(order[2])}
     else:
         if order[1] in dict_orders[order[0]]:
-            dict_orders[order[0]][order[1]]+=int(order[2])
+            dict_orders[order[0]][order[1]] += int(order[2])
         else:
             dict_orders[order[0]].update({order[1]:int(order[2])})
 for client,history in dict_orders.items():
