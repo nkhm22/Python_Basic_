@@ -25,4 +25,3 @@ def zip_sym():
 
 
 print(zip_sym())
-# TODO здесь писать код
