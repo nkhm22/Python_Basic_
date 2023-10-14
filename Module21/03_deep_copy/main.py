@@ -30,6 +30,7 @@ def find_key(strukture, key):
             result = find_key(substruct,key)
             print('0', result)
             result = 'Куплю\продам {} недорого'.format(product)
+            result = 'У нас самая низкая цена на {}'.format(product)
             substruct[key]=result
             print('1', result)
             if result:
