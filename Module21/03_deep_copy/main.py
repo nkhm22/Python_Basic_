@@ -12,41 +12,21 @@ site = {
         }
     }
 }
-def deep_copy(object):
-    if isinstance(object, (int, float, str)):
-        return object
-    elif isinstance(object, (list)):
-        return[deep_copy(item) for item in object]
-    elif isinstance(object, (dict)):
-        return {key: deep_copy(value) for key, value in object.items()}
-    else:
-        return copy.deepcopy(object)
-
-def find_key(strukture, key):
-    if key in strukture:
-        return strukture[key]
-    for substruct in strukture.values():
-        if isinstance (substruct,dict):
-            result = find_key(substruct,key)
-            print('0', result)
-            result = 'Куплю\продам {} недорого'.format(product)
-            substruct[key]=result
-            print('1', result)
+def search(struct,key,value):
+    if key in struct:
+        struct[key]=value
+        return site_copy
+    for i in struct.values():
+        if isinstance(i,dict):
+            result=search(i, key, value)
             if result:
-                break
-    else:
-        result=None
-    return strukture
-
-sites=int(input('Сколько сайтов?'))
-count=1
-site_list=[]
-while count<=sites:
-    product=input('Введите название продукта для нового сайта: ')
-    productes_sait=deep_copy(site)
-    print('Копия:')
-    count+=1
-    value=find_key(site, 'title')
-    if value:
-        print('Сайт для {}:'.format(product), 'site', value)
-        print('У нас самая низкая цена на {}'.format(product), 'site', value)
+                return site_copy
+site_copy=copy.deepcopy(site)
+for _ in range(int(input('Сколько сайтов?'))):
+    name=input('Название продукта:')
+    keys={'title': 'Куплю/продам {n} недорого'.format(n=name),
+          'h2': 'У нас самая низкая цена на {n}'.format(n=name)}
+    for i_key in keys:
+        search(site_copy,i_key, keys[i_key])
+    print(f'Сайт для {name}')
+    print('site=', site_copy)
