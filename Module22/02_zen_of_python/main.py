@@ -1,7 +1,6 @@
 import os
 
 zen_file=open('zen.txt','r')
-count=0
 zen_list=[]
 for string in zen_file:
     zen_list.append(string)
