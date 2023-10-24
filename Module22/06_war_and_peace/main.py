@@ -29,6 +29,7 @@ def print_stats(stats):
     for char, count in stats.items():
         print("|{: ^9}|{: ^9}|".format(char, count), file=o)
     print("+{:-^19}+".format('+'), file=o)
+    o.close()
 
 def sort_frequency(stats_dict):
     sorted_values=sorted(stats_dict.values())
