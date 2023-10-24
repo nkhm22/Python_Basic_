@@ -18,4 +18,4 @@ for i_elem in list_2_tour:
     second_tour.write('\t')
     second_tour.write(i_elem.split()[2])
     second_tour.write('\n')
-
+second_tour.close()
