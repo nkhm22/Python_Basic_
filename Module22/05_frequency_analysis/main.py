@@ -15,3 +15,4 @@ for line in text:
         analysis.write(' : ')
         analysis.write(str(round(float(freq/len(line)), 3)))
         analysis.write('\n')
+analysis.close()
