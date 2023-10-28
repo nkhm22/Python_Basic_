@@ -1,16 +1,25 @@
 import os
-path='C:\\Users\\79067\\OneDrive\\Рабочий стол\\Задания Skillbox\\Python_Basic\\Module16'
-def find_file(cur_path):
-    files=0
-    dir=0
-    size=0
-    for elem in os.listdir(cur_path):
-        path1=os.path.abspath(elem)
-        if os.path.isfile(elem):
-            files+=1
-            size+=os.path.getsize(elem)
+def file_sizes(path):
+    files_stat = [0, 0, 0]
+
+    for i_elem in os.listdir(path):
+        if os.path.isfile(os.path.abspath(os.path.join(path, i_elem))):
+            file_path = os.path.abspath(os.path.join(path, i_elem))
+            file_size = os.path.getsize(file_path)
+            files_stat[0] += file_size
+            files_stat[1] += 1
+
         else:
-            dir+=1
-            find_file(path1)
-    return files, dir, size
-print(find_file(path))
+            resul = file_sizes(os.path.abspath(os.path.join(path, i_elem)))
+            files_stat[0] += resul[0]
+            files_stat[1] += resul[1]
+            files_stat[2] += 1
+    return files_stat
+
+
+path = os.path.abspath(os.path.join('..', '..', 'Module14'))
+
+result = file_sizes(path)
+print('Размер каталога (в Кб):', result[0] / 1024)
+print('Количество подкаталогов:', result[2])
+print('Количество файлов:', result[1])
