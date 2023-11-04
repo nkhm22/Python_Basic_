@@ -19,8 +19,6 @@ class Child():
         self.age_child = age_child
         self.calm_status = calm_status
         self.hunger_status = hunger_status
-    def print_child(self):
-        print('Имя ребенка: {}, возраст ребенка: {}, Спокоен? (Да/Нет): {}, Голоден? (Да/Нет): {}'.format(self.name_child, self.age_child, self.calm_status, self.hunger_status))
     def action(self):
         self.calm_status = random.choice([True, False])
         if self.calm_status == False:
