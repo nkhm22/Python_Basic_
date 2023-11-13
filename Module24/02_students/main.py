@@ -5,7 +5,7 @@ class Student():
         self.group = group
         self.estimation = estimation
     def print_stud(self):
-        print('Имя и фамилия: {}, номер группы: {}, оценки: {}'.format(self.name_surname, self.group, self.estimation))
+        print('Имя и фамилия: {}, номер группы: {}, средний балл: {}'.format(self.name_surname, self.group, self.estimation))
     def stud_name(self):
         self.name_surname = input('Введите имя и фамилию студента ')
         self.estimation = (random.randint(1, 5) + random.randint(1, 5) + random.randint(1, 5) + random.randint(1, 5) + random.randint(1, 5))/5
