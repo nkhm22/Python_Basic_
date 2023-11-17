@@ -1,69 +1,112 @@
+class Mud:
+    answer = "Вы сложили Воду и Землю получили класс Грязь"
+
+
 class Water:
-    list_water = ['Воздух', 'Огонь', 'Земля']
+    def __add__(self, left):
+        if type(left) == Soil:
+            return Mud()
 
-    name = "Вода"
 
-    def add(self, other):
-        if other in Water.list_water:
-            if other == 'Воздух':
-                return print(f'Из магии Воды и магии Воздуха мы получили магию Шторм')
-            if other == 'Огонь':
-                return print(f'Из магии Воды и магии Огня мы получили магию Пар')
-            if other == 'Земля':
-                return print(f'Из магии Воды и магии Земля мы получили магию Грязь')
-        else:
-            return None
+class Soil:
+    def __add__(self, left):
+        if type(left) == Water:
+            return Mud()
 
-    def print_info(self):
-        return print(f'Эта магия: {Water.name}')
+
+print((Water()+Soil()).answer)
+
+
+class Steam:
+    answer = "Вы сложили Воду и Огонь получили класс Пар"
+
+
+class Water:
+    def __add__(self, left):
+        if type(left) == Fire:
+            return Steam()
 
 
 class Fire:
-    list_fire = ['Земля', 'Вода', 'Воздух']
-    name = "Огонь"
+    def __add__(self, left):
+        if type(left) == Water:
+            return Steam()
 
-    def add(self, other):
-        if other in Fire.list_fire:
-            if other == 'Воздух':
-                return print(f'Из магии Огня и магии Воздуха мы получили магию Молния')
-            if other == 'Вода':
-                return print(f'Из магии Огня и магии Воды мы получили магию Пар')
-            if other == 'Земля':
-                return print(f'Из магии Огня и магии Земли мы получили магию Лава')
-        else:
-            return None
-    def print_info(self):
-        return print(f'Эта магия: {Fire.name}')
-class Earth:
-    list_earth = ['Огонь', 'Вода', 'Воздух']
-    name = "Земля"
 
-    def add(self, other):
-        if other in Earth.earth:
-            if other == 'Воздух':
-                return print(f'Из магии Земля и магии Воздух мы получили магию Пыль')
-            if other == 'Вода':
-                return print(f'Из магии Земля и магии Воды мы получили магию Грязь')
-            if other == 'Огонь':
-                return print(f'Из магии Огня и магии Земли мы получили магию Лава')
-        else:
-            return None
-    def print_info(self):
-        return print(f'Эта магия: {Earth.name}')
+print((Water() + Fire()).answer)
+
+
+class Storm:
+    answer = "Вы сложили Воду и Воздух получили класс Шторм"
+
+
+class Water:
+    def __add__(self, left):
+        if type(left) == Air:
+            return Storm()
+
+
 class Air:
-    list_air = ['Огонь', 'Вода', 'Земля']
-    name = "Воздух"
+    def __add__(self, left):
+        if type(left) == Water:
+            return Storm()
 
-    def add(self, other):
-        if other in Air.list_air:
-            if other == 'Земля':
-                return print(f'Из магии Земля и магии Воздух мы получили магию Пыль')
-            if other == 'Вода':
-                return print(f'Из магии Воды и магии Воздуха мы получили магию Шторм')
-            if other == 'Огонь':
-                return print(f'Из магии Огня и магии Земли мы получили магию Лава')
-        else:
-            return None
 
-    def print_info(self):
-        return print(f'Эта магия: {Air.name}')
+print((Water() + Air()).answer)
+
+
+class Lightning:
+    answer = "Вы сложили Огонь и Воздух получили класс Молния"
+
+
+class Fire:
+    def __add__(self, left):
+        if type(left) == Air:
+            return Lightning()
+
+
+class Air:
+    def __add__(self, left):
+        if type(left) == Fire:
+            return Lightning()
+
+
+print((Fire() + Air()).answer)
+
+
+class Dust:
+    answer = "Вы сложили Земля и Воздух получили класс Пыль"
+
+
+class Soil:
+    def __add__(self, left):
+        if type(left) == Air:
+            return Dust()
+
+
+class Air:
+    def __add__(self, left):
+        if type(left) == Soil:
+            return Dust()
+
+
+print((Soil() + Air()).answer)
+
+
+class Lava:
+    answer = "Вы сложили Земля и Огонь получили класс Лава"
+
+
+class Soil:
+    def __add__(self, left):
+        if type(left) == Fire:
+            return Lava()
+
+
+class Fire:
+    def __add__(self, left):
+        if type(left) == Soil:
+            return Lava()
+
+
+print((Soil() + Fire()).answer)
