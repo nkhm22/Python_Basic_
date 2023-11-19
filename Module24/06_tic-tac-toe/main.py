@@ -2,6 +2,8 @@ class Cell:
     def __init__(self, number, busy = False):
         self.number = str(number)
         self.busy = busy
+
+
 class Board:
     def __init__(self):
         self.board = [Cell(i) for i in range(1, 10)]

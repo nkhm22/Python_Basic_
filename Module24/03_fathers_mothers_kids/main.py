@@ -12,11 +12,13 @@ class Parent():
             children = input('Введите имя ребенка: ')
             self.children_list.append(children)
     def print_parent(self):
-        print('Имя родителя: {}, возраст родителя: {}, дети: {}'.format(self.name_parent, self.age_parent, self.children_list))
+        print('Имя родителя: {}, возраст родителя: {}, дети: {}'.format(self.name_parent, self.age_parent,
+                                                                        self.children_list))
 
 
 class Child():
-    def __init__(self, name_child='', age_child=int, calm_status=random.choice([True, False]), hunger_status=random.choice([True, False])):
+    def __init__(self, name_child='', age_child=int, calm_status=random.choice([True, False]),
+                 hunger_status=random.choice([True, False])):
         self.name_child = name_child
         self.age_child = age_child
         self.calm_status = calm_status
