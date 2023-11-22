@@ -15,7 +15,7 @@ class Board:
     def check_win(self):
         combination_win = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7], [1, 4, 7], [2, 5, 8], [3, 6, 9]]
         for comb in combination_win:
-            if player_1.symb[comb[0]] == player_1.symb[comb[1]] == player_1.symb[comb[2]]:
+            if self.board[comb[0]].number == self.board[comb[1]].number == self.board[comb[2]].number:
                 if player_1.symb == self.board[comb[0]].number:
                     print('Победил {}'.format(player_1.name))
                 else:
