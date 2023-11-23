@@ -13,7 +13,7 @@ class Board:
             print('|', self.board[i * 3].number, '|', self.board[1 + i * 3].number, '|', self.board[2 + i * 3].number, '|')
             print('+' * 13)
     def check_win(self):
-        combination_win = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7], [1, 4, 7], [2, 5, 8], [3, 6, 9]]
+        combination_win = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]]
         for comb in combination_win:
             if self.board[comb[0]].number == self.board[comb[1]].number == self.board[comb[2]].number:
                 if player_1.symb == self.board[comb[0]].number:
