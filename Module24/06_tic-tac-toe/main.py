@@ -21,7 +21,7 @@ class Board:
                 else:
                     print('Победил {}'.format(player_2.name))
                 return True
-            return False
+        return False
     def check_busy(self, number):
         if self.board[number - 1].busy:
             return True
