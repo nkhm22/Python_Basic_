@@ -37,31 +37,31 @@ class Human:
 home = Home()
 human = Human(home)
 count_day = 0
-human_list = []
 human.human_enter()
 for __ in range(365):
     count_day += 1
-    print(f'{count_day}-й день')
-    if human.life_day_action() == 1:
-        print('На кубике выпало 1')
-        human.work()
-        print('{} поработал, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-    elif human.life_day_action() == 2:
-        print('На кубике выпало 2')
-        human.eat()
-        print('{} поел, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-    else:
-        human.play()
-        print('{} поиграл, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-        if human.satiety < 20:
-            human.eat()
-            print('{} поел, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-        if home.fridge < 10:
-            human.shop()
-            print('{} cходил в магазин, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-        if home.money < 50:
+    for _ in Human.lst:
+        print(f'{count_day}-й день')
+        if human.life_day_action() == 1:
+            print('На кубике выпало 1')
             human.work()
             print('{} поработал, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
-        if human.satiety < 0:
-            print('Человек умер')
-            break
+        elif human.life_day_action() == 2:
+            print('На кубике выпало 2')
+            human.eat()
+            print('{} поел, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
+        else:
+            human.play()
+            print('{} поиграл, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
+            if human.satiety < 20:
+                human.eat()
+                print('{} поел, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
+            if home.fridge < 10:
+                human.shop()
+                print('{} cходил в магазин, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
+            if home.money < 50:
+                human.work()
+                print('{} поработал, сытость: {}, еда: {}, деньги: {}'.format(human.name, human.satiety, home.fridge, home.money))
+            if human.satiety < 0:
+                print('Человек умер')
+                break
