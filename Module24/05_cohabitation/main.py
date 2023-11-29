@@ -3,21 +3,14 @@ class Home:
     def __init__(self):
         self.fridge = 50
         self.money = 0
-        self.l_lodger = [Human(self) for _ in range(1, 2)]
 
 
 class Human:
     lst = []
-    def __init__(self, other):
-        self.name = ''
+    def __init__(self, name, other):
+        self.name = name
         self.house = other
         self.satiety = 50
-        Human.lst.append(self)
-    def human_enter(self):
-        quantity = int(input('Введите количество людей: '))
-        for _ in range(quantity):
-            self.name = input('Введите имя человека: ')
-            self.lst.append(self.name)
     def work(self):
         self.house.money += 1
         self.satiety -= 1
@@ -35,12 +28,12 @@ class Human:
 
 
 home = Home()
-human = Human(home)
+quantity = int(input('Введите количество людей: '))
+humans = [Human(input("Введите имя: "), home) for _ in range(quantity)]
 count_day = 0
-human.human_enter()
 for __ in range(365):
     count_day += 1
-    for _ in Human.lst:
+    for human in humans:
         print(f'{count_day}-й день')
         if human.life_day_action() == 1:
             print('На кубике выпало 1')
