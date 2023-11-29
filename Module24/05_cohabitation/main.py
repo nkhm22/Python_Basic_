@@ -37,7 +37,6 @@ class Human:
 home = Home()
 human = Human(home)
 count_day = 0
-human.human_enter()
 for __ in range(365):
     count_day += 1
     for _ in Human.lst:
