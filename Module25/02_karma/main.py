@@ -1,44 +1,44 @@
 import random
 
 
-
-class KillError():
-    def __str__(self):
-        return 'Убил человека'
-
-
-class DrunkError():
-    def __str__(self):
-        return'Напился'
+class KillError(Exception):
+    def __init__(self):
+        super().__init__('Убил человека')
 
 
-class CarCrashError():
-    def __str__(self):
-        return 'Попал в ДТП'
+class DrunkError(Exception):
+    def __init__(self):
+        super().__init__('Напился')
+
+
+class CarCrashError(Exception):
+    def __init__(self):
+        super().__init__('Попал в ДТП')
 
 
 class GluttonyError(Exception):
-    def __str__(self):
-        return 'Объелся'
+    def __init__(self):
+        super().__init__('Объелся')
 
 
-class DepressionError():
-    def __str__(self):
-        return 'Впал в депрессию'
+class DepressionError(Exception):
+    def __init__(self):
+        super().__init__('Впал в депрессию')
 
-
+excs = (GluttonyError, DepressionError, CarCrashError, DrunkError, KillError)
 def one_day():
     if random.randint(1, 10) != 10:
         return random.randint(1, 7)
     else:
-        raise BaseException
+        raise random.choice(excs)
 
 
 karma = 0
-while karma <= 500:
-    try:
-        karma += one_day()
-        print(karma)
-    except BaseException:
-        with open('karma.log', 'w', encoding='utf-8') as errors:
-            errors.write(random.choice(['Убил человека', 'Напился', 'Попал в ДТП', 'Объелся', 'Впал в депрессию']))
+with open('karma.log', 'w', encoding='utf-8') as errors:
+    while karma <= 500:
+        try:
+            karma += one_day()
+            print(karma)
+        except excs as ex:
+            print(ex, type(ex))
+            errors.write(f'{ex}, ')
