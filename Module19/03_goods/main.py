@@ -24,4 +24,11 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for lamp in store.get('12345'):
+    print('Лампа —', lamp.get('quantity'), 'штук, стоимость:', lamp.get('quantity') * lamp.get('price'))
+for table in store.get('23456'):
+    print('Стол —', table.get('quantity'), 'штук, стоимость:', table.get('quantity') * table.get('price'))
+for sofa in store.get('34567'):
+    print('Диван —', sofa.get('quantity'), 'штук, стоимость:', sofa.get('quantity') * sofa.get('price'))
+for chair in store.get('45678'):
+    print('Стул —', chair.get('quantity'), 'штук, стоимость:', chair.get('quantity') * chair.get('price'))
