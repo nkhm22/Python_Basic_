@@ -15,12 +15,11 @@ names_list = []
 estimations_list = []
 pairs = []
 quantity = int(input('Введите количество студентов: '))
-for _ in range(quantity):
+for i in range(quantity):
     stud.stud_name()
     names_list.append(stud.name_surname)
     estimations_list.append(stud.estimation)
     stud.print_stud()
-for i in range(quantity):
     pairs.append((names_list[i], estimations_list[i]))
 pairs.sort(key=lambda x: x[1])
 print(pairs)
