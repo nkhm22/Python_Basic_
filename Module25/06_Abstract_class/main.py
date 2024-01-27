@@ -43,7 +43,7 @@ circle = Circle(5)
 rectangle = Rectangle(4, 6)
 triangle = Triangle(3, 8)
 
-# Вычисление площадей фигур
+# Вычисление площади фигур
 circle_area = circle.area()
 rectangle_area = rectangle.area()
 triangle_area = triangle.area()
