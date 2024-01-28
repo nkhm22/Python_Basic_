@@ -83,29 +83,30 @@ class Healer(Hero):
         target_of_potion = friends[0]
         min_health = target_of_potion.get_hp()
         for friend in friends:
-            if friend.get_hp() < min_health:
+            if friend.get_hp() == min_health:
                 target_of_potion = friend
                 min_health = target_of_potion.get_hp()
-
-        if min_health <= 80:
-            print("Исцеляю", target_of_potion.name)
+        if min_health <= 100:
+            print('Исцеляю:', target_of_potion.name)
             self.hill(target_of_potion)
         else:
             if not enemies:
                 return
-            print("Атакую ближнего -", enemies[0].name)
+            print('Атакую ближнего:', enemies[0])
             self.attack(enemies[0])
         print('\n')
 
-
-# Атрибуты:
-# - магическая сила - равна значению НАЧАЛЬНОГО показателя силы умноженному на 3 (self.__power * 3)
-# Методы:
-# - атака - может атаковать врага, но атакует только в половину силы self.__power
-# - получение урона - т.к. защита целителя слаба - он получает на 20% больше урона (1.2 * damage)
-# - исцеление - увеличивает здоровье цели на величину равную своей магической силе
-# - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
-# исцеление) на выбранную им цель
+    def __str__(self):
+        return super().__str__()
+     # Целитель:
+    # Атрибуты:
+    # - магическая сила - равна значению НАЧАЛЬНОГО показателя силы умноженному на 3 (self.__power * 3)
+    # Методы:
+    # - атака - может атаковать врага, но атакует только в половину силы self.__power
+    # - получение урона - т.к. защита целителя слаба - он получает на 20% больше урона (1.2 * damage)
+    # - исцеление - увеличивает здоровье цели на величину равную своей магической силе
+    # - выбор действия - получает на вход всех союзников и всех врагов и на основе своей стратегии выполняет ОДНО из действий (атака,
+    # исцеление) на выбранную им цель
 
 
 class Tank(Hero):
@@ -135,21 +136,18 @@ class Tank(Hero):
     def make_a_move(self, friends, enemies):
         super().make_a_move(friends, enemies)
         print(self.name, end=' ')
-
-        if self.get_hp() < 80 and not self.shield:
+        if self.get_hp() < 90 and not self.shield:
             self.set_shield_state()
-        elif self.get_hp() > 80 and self.shield:
+        elif self.get_hp() > 90 and self.shield:
             self.set_shield_state()
         else:
             target = enemies[0]
             min_health = target.get_hp()
-
             for enemy in enemies:
                 if enemy.get_hp() < min_health:
                     target = enemy
                     min_health = enemy.get_hp()
-
-            print("Атакую ближнего -", target.name)
+            print('Атакую ближнего -', target.name)
             self.attack(target)
             print('\n')
 
@@ -170,10 +168,9 @@ class Tank(Hero):
 
 
 class Attacker(Hero):
-
     def __init__(self, name):
         super().__init__(name)
-        self.power_multiply = 1
+        self.power_multiply = 3
 
     def attack(self, target):
         target.take_damage(self.get_power() * self.power_multiply)
@@ -204,10 +201,13 @@ class Attacker(Hero):
             if enemy.get_hp() < min_health:
                 target = enemy
                 min_health = enemy.get_hp()
-
-        print("Атакую ближнего -", target.name)
+        print('Атакую ближнего -', target.name)
         self.attack(target)
         print('\n')
+
+    def __str__(self):
+        return super().__str__()
+
     # Убийца:
     # Атрибуты:
     # - коэффициент усиления урона (входящего и исходящего)
