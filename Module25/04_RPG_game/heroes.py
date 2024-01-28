@@ -1,6 +1,3 @@
-import random
-
-
 class Hero:
     # Базовый класс, который не подлежит изменению
     # У каждого наследника будут атрибуты:
@@ -90,7 +87,7 @@ class Healer(Hero):
                 target_of_potion = friend
                 min_health = target_of_potion.get_hp()
 
-        if min_health <= random.randint(60, 100):
+        if min_health <= 80:
             print("Исцеляю", target_of_potion.name)
             self.hill(target_of_potion)
         else:
